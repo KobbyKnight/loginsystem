@@ -1,183 +1,172 @@
-<?php session_start();
-require_once('dbconnection.php');
-
-//Code for Registration 
-if(isset($_POST['signup']))
-{
-	$fname=$_POST['fname'];
-	$lname=$_POST['lname'];
-	$email=$_POST['email'];
-	$password=$_POST['password'];
-	$contact=$_POST['contact'];
-	$enc_password=md5($password);
-	$a=date('Y-m-d');
-	$msg=mysqli_query($con,"insert into users(fname,lname,email,password,contactno,posting_date) values('$fname','$lname','$email','$enc_password','$contact','$a')");
-if($msg)
-{
-	echo "<script>alert('Register successfully');</script>";
-}
-}
-
-// Code for login system
-if(isset($_POST['login']))
-{
-$password=$_POST['password'];
-$dec_password=md5($password);
-$useremail=$_POST['uemail'];
-$ret= mysqli_query($con,"SELECT * FROM users WHERE email='$useremail' and password='$dec_password'");
-$num=mysqli_fetch_array($ret);
-if($num>0)
-{
-$extra="welcome.php";
-$_SESSION['login']=$_POST['uemail'];
-$_SESSION['id']=$num['id'];
-$_SESSION['name']=$num['fname'];
-$host=$_SERVER['HTTP_HOST'];
-$uri=rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
-header("location:http://$host$uri/$extra");
-exit();
-}
-else
-{
-echo "<script>alert('Invalid username or password');</script>";
-$extra="index.php";
-$host  = $_SERVER['HTTP_HOST'];
-$uri  = rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
-//header("location:http://$host$uri/$extra");
-exit();
-}
-}
-
-//Code for Forgot Password
-
-if(isset($_POST['send']))
-{
-$row1=mysqli_query($con,"select email,password from users where email='".$_POST['femail']."'");
-$row2=mysqli_fetch_array($row1);
-if($row2>0)
-{
-$email = $row2['email'];
-$subject = "Information about your password";
-$password=$row2['password'];
-$message = "Your password is ".$password;
-mail($email, $subject, $message, "From: $email");
-echo  "<script>alert('Your Password has been sent Successfully');</script>";
-}
-else
-{
-echo "<script>alert('Email not register with us');</script>";	
-}
-}
-
-?>
-<!DOCTYPE html>
+<!DOCTYPE <!DOCTYPE html>
 <html>
 <head>
-<title>Login System</title>
-<link href="css/style.css" rel='stylesheet' type='text/css' />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Elegent Tab Forms,Login Forms,Sign up Forms,Registration Forms,News latter Forms,Elements"./>
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-</script>
-<script src="js/jquery.min.js"></script>
-<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
-				<script type="text/javascript">
-					$(document).ready(function () {
-						$('#horizontalTab').easyResponsiveTabs({
-							type: 'default',       
-							width: 'auto', 
-							fit: true 
-						});
-					});
-				   </script>
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700,200italic,300italic,400italic,600italic|Lora:400,700,400italic,700italic|Raleway:400,500,300,600,700,200,100' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HNIS ONLINE RESGISTRATION</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style1.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="js/caroufredsel.js"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
 </head>
 <body>
-<div class="main">
-		<h1>NHIS Registration and Login</h1>
-	 <div class="sap_tabs">	
-			<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
-			  <ul class="resp-tabs-list">
-			  	  <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><div class="top-img"><img src="images/top-note.png" alt=""/></div><span>Register</span>
-			  	  	
-				</li>
-				  <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><div class="top-img"><img src="images/top-lock.png" alt=""/></div><span>Login</span></li>
-				  <li class="resp-tab-item lost" aria-controls="tab_item-2" role="tab"><div class="top-img"><img src="images/top-key.png" alt=""/></div><span>Forgot Password</span></li>
-				  <div class="clear"></div>
-			  </ul>		
-			  	 
-			<div class="resp-tabs-container">
-					<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
-					<div class="facts">
-					
-						<div class="register">
-							<form name="registration" method="post" action="" enctype="multipart/form-data">
-								<p>First Name </p>
-								<input type="text" class="text" value=""  name="fname" required >
-								<p>Last Name </p>
-								<input type="text" class="text" value="" name="lname"  required >
-								<p>Email Address </p>
-								<input type="text" class="text" value="" name="email"  >
-								<p>Password </p>
-								<input type="password" value="" name="password" required>
-										<p>Contact No. </p>
-								<input type="text" value="" name="contact"  required>
-								<div class="sign-up">
-									<input type="reset" value="Reset">
-									<input type="submit" name="signup"  value="Sign Up" >
-									<div class="clear"> </div>
-								</div>
-							</form>
+    <header>
+        <div class="container">
+            <div class="row">
+            <a href="" class="logo"><img src="images/mail.png"></a>
 
-						</div>
-					</div>
-				</div>		
-			 <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
-					 	<div class="facts">
-							 <div class="login">
-							<div class="buttons">
-								
-								
-							</div>
-							<form name="login" action="" method="post">
-								<input type="text" class="text" name="uemail" value="" placeholder="Enter your registered email"  ><a href="#" class=" icon email"></a>
+              <nav class="listt" style="float:right;"> 
+                  <ul class="list">
+                      <li><a href="">HOME</a></li>
+                      <li><a href="">SERVICES</a></li>
+                      <li><a href="">ABOUT US</a></li>
+                      <li><a href="">CONTACT US</a></li>
+                  </ul>
+              </nav>
+            </div>
+        </div>
+    </header>
+    <section class="slider">
+        <ul class="slide-carousel" id="slider-carousel">
+            <li class="img1">
+                <h2>NATIONAL HEALTH <span>INSURANCE SCHEME</span></h2>
+                <p>Your Access to Health Care</p>
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-google-plus-g"></i>
+                <i class="fab fa-twitter"></i>
+                <p><br>
+                    Renew your Membership Annually to enjoy <br>
+                    uninterrupted access to healthcare 
+                </p><br>
+                
+<div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sign Up
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="premium.php">Individual</a>
+    <a class="dropdown-item" href="exempt-group.php">Exempt Group</a>
+  </div>
+</div>
+                <a href="login1.php"class="btn btn-full">Login</a>
+            </li>
+            <li class="img2">
+                <h2>NATIONAL HEALTH <span>INSURANCE SCHEME</span></h2>
+                <p>Your Access to Health Care</p>
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-google-plus-g"></i>
+                <i class="fab fa-twitter"></i>
+                <p><br>
+                    Renew your Membership Annually to enjoy <br>
+                    uninterrupted access to healthcare 
+                </p><br>
+                
+<div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sign Up
+  </button>
+  <div class="dropdown-menu">
+  <a class="dropdown-item" href="premium.php">Individual</a>
+    <a class="dropdown-item" href="exempt-group.php">Exempt Group</a>
+  </div>
+</div>
+                <a href="login1.php"class="btn btn-full">Login</a>
+            </li>
+            <li class="img3">
+                <h2>NATIONAL HEALTH <span>INSURANCE SCHEME</span></h2>
+                <p>Your Access to Health Care</p>
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-google-plus-g"></i>
+                <i class="fab fa-twitter"></i>
+                <p><br>
+                    Renew your Membership Annually to enjoy <br>
+                    uninterrupted access to healthcare 
+                </p><br>
+                
+<div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sign Up
+  </button>
+  <div class="dropdown-menu">
+  <a class="dropdown-item" href="premium.php">Individual</a>
+    <a class="dropdown-item" href="exempt-group.php">Exempt Group</a>
+  </div>
+</div>
+                <a href="login1.php"class="btn btn-full">Login</a>
+            </li>
+            </ul>
+        </section>
+        
 
-								<input type="password" value="" name="password" placeholder="Enter valid password"><a href="#" class=" icon lock"></a>
+        <section class="intro-area white" id="intro">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <h2>ABOUT US</h2>
+                        <div class="sub-heading">
+                            <p>Know This About Us</p>
+                        </div>
+                    </div>
+                </div>
 
-								<div class="p-container">
-								
-									<div class="submit two">
-									<input type="submit" name="login" value="LOG IN" >
-									</div>
-									<div class="clear"> </div>
-								</div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="intro-block">
+                            <span class="intro-icon"><i class="fab fa-angellist"></i></span>
+                            <h3>Brief Introduction</h3>
+                            <p>
+                            The NHIS is a social intervention program introduced by
+                            government to provide financial access to quality health
+                            care for residents in Ghana.
+                            </p>
+                        </div>
+                    </div>
+                
 
-							</form>
-					</div>
-				</div> 
-			</div> 			        					 
-				 <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
-					 	<div class="facts">
-							 <div class="login">
-							<div class="buttons">
-								
-								
-							</div>
-							<form name="login" action="" method="post">
-								<input type="text" class="text" name="femail" value="" placeholder="Enter your registered email" required  ><a href="#" class=" icon email"></a>
-									
-										<div class="submit three">
-											<input type="submit" name="send" onClick="myFunction()" value="Send Email" >
-										</div>
-									</form>
-									</div>
-				         	</div>           	      
-				        </div>	
-				     </div>	
-		        </div>
-	        </div>
-	     </div>
+                <div class="col-sm-4">
+                        <div class="intro-block">
+                            <span class="intro-icon"><i class="fas fa-users"></i></span>
+                            <h3>Subscriber Grouping</h3>
+                            <p>
+                            The NHIS is a social intervention program introduced by
+                            government to provide financial access to quality health
+                            care for residents in Ghana.
+                            </p>
+                        </div>
+                    </div>
+                
 
+                <div class="col-sm-4">
+                        <div class="intro-block">
+                            <span class="intro-icon"><i class="far fa-hospital"></i></span>
+                            <h3>Health Facilities</h3>
+                            <p>
+                            The NHIS is a social intervention program introduced by
+                            government to provide financial access to quality health
+                            care for residents in Ghana.
+                            </p>
+                        </div>
+                    </div>
+                
+            </div>
+        </section>
+    </div>
+
+
+<script src="js/main.js"></script>            
 </body>
 </html>

@@ -70,7 +70,7 @@ if($msg)
 								<input type="text" class="text" value=""  name="dob" required >
 								<p>Marital Status </p>
 								<div class="form-group">
-								<!-- If you dont like editing dont do copy nd paste i miseed something...... -->
+								
 								<input type="radio" class="form-control" value="marital" id="marital" name="marital" required ><Label for="love">Married</label>
 								<input type="radio" class="form-control" value="single" id="single" name="marital" required ><Label for="single">Single</label>
 								<input type="radio" class="form-control" value="divorced" id="divorced" name="marital" required ><Label for="divorced">Divorced</label>
@@ -85,7 +85,7 @@ if($msg)
 								
 								<input type="file" accept="image/*" class="text"  name="photo" id="photo" >
 								<p>National Id </p>
-								<input type="file" accept="image/*" class="text"  name="id" id="id" >
+								<input type="file" accept="image/*" class="text"  name="photo1" id="id" >
 								<p>Email Address </p>
 								<input type="text" class="text" name="email"  >
 									<input type="submit" name="Signup"  value="Sign Up" >

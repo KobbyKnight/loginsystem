@@ -138,13 +138,13 @@ echo "<script>alert('Data deleted');</script>";
                                   <td><?php echo $row['Reg. Date'];?></td>
                                   <td>
                                      
-                                     <a href="update-profile.php?uid=<?php echo $row['id'];?>"> 
+                                     <a href="update-list.php?uid=<?php echo $row['id'];?>"> 
                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
                                      <a href="manage-users.php?id=<?php echo $row['id'];?>"> 
                                      <button class="btn btn-danger btn-xs" onClick="return confirm('Do you really want to delete');"><i class="fa fa-trash-o "></i></button></a>
-                                     <a href="#">
+                                     <a href="view-list.php?uid=<?php echo $row['id'];?>">
                                      <button class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></button></a>
-                                     <a href="#">
+                                     <a href="paid-list.php?idid=<?php echo $row['id'];?>">
                                      <button class="btn btn-primary btn-xs"><i class="fa fa-thumbs-up"></i></button></a>
                                   </td>
                               </tr>

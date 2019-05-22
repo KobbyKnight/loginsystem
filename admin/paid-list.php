@@ -1,17 +1,41 @@
 <?php
 session_start();
 include'dbconnection.php';
-include("checklogin.php");
-check_login();
-if(isset($_GET['id']))
-{
-$adminid=$_GET['id'];
+//include("checklogin.php");
+//check_login();
+//if(isset($_GET['idid']))
+//{
+$adminid=$_GET['idid'];
+
+
+select * from list;
+
+    $fname=$_POST['First_name'];
+	$lname=$_POST['Last_name'];
+    $dob=$_POST['D.O.B'];
+    $marital=$_POST['Marital_status'];
+    $phone=$_POST['Phone'];
+    $raddress=$_POST['Address'];
+    $provider=$_POST['Provider'];
+    $photo=$_POST['Photo'];
+    $photo1=$_POST['Identification'];
+    $email=$_POST['Email'];
+    $email=$_POST['Reg. Date'];
+
+
+    echo $fname;
+
+    /*
+
+INSERT INTO `list`(`id`, `First_name`, `Last_name`, `D.O.B`, `Marital_status`, `Phone`, `Address`, `Provider`, `Photo`, `Identification`, `Email`, `Reg. Date`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9],[value-10],[value-11],[value-12])
 $msg=mysqli_query($con,"delete from list where id='$adminid'");
 if($msg)
 {
 echo "<script>alert('Data deleted');</script>";
-}
-}
+} */
+//}
+
+
 ?><!DOCTYPE html>
 <html lang="en">
   <head>

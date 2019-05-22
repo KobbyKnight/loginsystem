@@ -14,24 +14,24 @@ if(isset($_POST['group']))
     $condition=$_['condition'];
     $proof=$_['proof'];
     $photo=$_['photo'];
-    $id=$_['id'];
+    $photo1=$_['photo1'];
 	$a=date('Y-m-d');
-	$msg=mysqli_query($con,"insert into group(fname,lname,dob,marital,phone,raddress,provider,condition,proof,photo,id,posting_date) values('$fname','$lname','$dob','$marital','$phone','$raddress','$provider','$photo','$id','$a')");
+	$msg=mysqli_query($con,"insert into group(fname,lname,dob,marital,phone,raddress,provider,condition,proof,photo,photo1,posting_date) values('$fname','$lname','$dob','$marital','$phone','$raddress','$provider','$photo','$photo1','$a')");
 if($msg)
 {
-	echo "<script>alert('Registered successfully');</script>";
+	echo "<script>alert('Group List successfully');</script>";
 }
 }
 ?><!DOCTYPE html>
 <html>
 <head>
-<title>Registration System</title>
+<title>NHIS Registration System</title>
 <link href="css/style.css" rel='stylesheet' type='text/css' />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Elegent Tab Forms,Login Forms,Sign up Forms,Registration Forms,News latter Forms,Elements"./>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-</script>
+
 <script src="js/jquery.min.js"></script>
 <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 				<script type="text/javascript">
@@ -71,9 +71,9 @@ if($msg)
 								<p>Date of Birth </p>
 								<input type="text" class="text" value=""  name="dob" required >
 								<p>Marital Status </p>
-								<input type="checkbox" class="text" value="marital" id="marital" name="marital"  ><Label for="love">Married</label>
-								<input type="checkbox" class="text" value="marital" id="marital" name="marital"  ><Label for="love">Single</label>
-								<input type="checkbox" class="text" value="marital" id="marital" name="marital"  ><Label for="love">Divorced</label>
+								<input type="radio" class="form-control" value="marital" id="marital" name="marital" required ><Label for="love">Married</label>
+								<input type="radio" class="form-control" value="single" id="single" name="marital" required ><Label for="single">Single</label>
+								<input type="radio" class="form-control" value="divorced" id="divorced" name="marital" required ><Label for="divorced">Divorced</label>
                                 <p>Phone Number </p>
 								<input type="text" class="text" value="" name="phone"  >
 								<p>Residential Address </p>
@@ -85,9 +85,11 @@ if($msg)
                                 <p>Proof of Condition </p>
 								<input type="text" class="text" value="" name="proof"  >
 								<p>Applicant Current Photo </p>
-								<input type="file" accept="image/*" class="text" value="upload image" name="photo" id="photo" >
+								
+								<input type="file" accept="image/*" class="text"  name="photo" id="photo" >
 								<p>National Id </p>
-								<input type="file" accept="image/*" class="text" value="upload image" name="id" id="photo" >
+								<input type="file" accept="image/*" class="text"  name="photo1" id="id" >
+
 								<p>Email Address </p>
 								<input type="text" class="text" value="" name="email"  >
 								<p>Password </p>

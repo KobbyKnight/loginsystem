@@ -142,7 +142,7 @@ echo "<script>alert('Data deleted');</script>";
                                   <td><?php echo $row['Reg.Date'];?></td>
                                   <td>
                                      
-                                     <a href="update-profile.php?uid=<?php echo $row['id'];?>"> 
+                                     <a href="update-exempt.php?uid=<?php echo $row['id'];?>"> 
                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
                                      <a href="manage-users.php?id=<?php echo $row['id'];?>"> 
                                      <button class="btn btn-danger btn-xs" onClick="return confirm('Do you really want to delete');"><i class="fa fa-trash-o "></i></button></a>
