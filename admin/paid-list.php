@@ -1,42 +1,14 @@
 <?php
 session_start();
 include'dbconnection.php';
-//include("checklogin.php");
-//check_login();
-//if(isset($_GET['idid']))
-//{
-$adminid=$_GET['idid'];
-
-
-select * from list;
-
-    $fname=$_POST['First_name'];
-	$lname=$_POST['Last_name'];
-    $dob=$_POST['D.O.B'];
-    $marital=$_POST['Marital_status'];
-    $phone=$_POST['Phone'];
-    $raddress=$_POST['Address'];
-    $provider=$_POST['Provider'];
-    $photo=$_POST['Photo'];
-    $photo1=$_POST['Identification'];
-    $email=$_POST['Email'];
-    $email=$_POST['Reg. Date'];
-
-
-    echo $fname;
-
-    /*
-
-INSERT INTO `list`(`id`, `First_name`, `Last_name`, `D.O.B`, `Marital_status`, `Phone`, `Address`, `Provider`, `Photo`, `Identification`, `Email`, `Reg. Date`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9],[value-10],[value-11],[value-12])
-$msg=mysqli_query($con,"delete from list where id='$adminid'");
-if($msg)
-{
-echo "<script>alert('Data deleted');</script>";
-} */
-//}
-
-
-?><!DOCTYPE html>
+if ($_GET) {
+$query = "UPDATE `list` set `paid` = '1'";
+$resp = mysqli_query($con,$query) or die(mysqli_error());
+$check = $resp ? "<script>alert('Approval Successful')</script>":$resp;
+echo $check;
+}
+?>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -58,9 +30,9 @@ echo "<script>alert('Data deleted');</script>";
               </div>
             <a href="#" class="logo"><b>Admin Dashboard</b></a>
             <div class="nav notify-row" id="top_menu">
-               
-                         
-                   
+
+
+
                 </ul>
             </div>
             <div class="top-menu">
@@ -72,10 +44,10 @@ echo "<script>alert('Data deleted');</script>";
       <aside>
           <div id="sidebar"  class="nav-collapse ">
               <ul class="sidebar-menu" id="nav-accordion">
-              
+
               	  <p class="centered"><a href="#"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
               	  <h5 class="centered"><?php echo $_SESSION['login'];?></h5>
-              	  	
+
                   <li class="mt">
                       <a href="change-password.php">
                           <i class="fa fa-file"></i>
@@ -88,7 +60,7 @@ echo "<script>alert('Data deleted');</script>";
                           <i class="fa fa-users"></i>
                           <span>Manage Users</span>
                       </a>
-                   
+
                   </li>
 
                   <li class="sub-menu">
@@ -97,22 +69,22 @@ echo "<script>alert('Data deleted');</script>";
                           <span>Manage Group List</span>
                       </a>
                   </li>
-                  
+
                   <li class="sub-menu">
                       <a href="manage-list.php">
                           <i class="fa fa-users"></i>
                           <span>Manage List</span>
                       </a>
                   </li>
-                  
+
                   <li class="sub-menu">
                       <a href="paid-list.php">
                           <i class="fa fa-users"></i>
                           <span>Paid Personal</span>
                       </a>
                   </li>
-              
-                 
+
+
               </ul>
           </div>
       </aside>
@@ -120,9 +92,9 @@ echo "<script>alert('Data deleted');</script>";
           <section class="wrapper">
           	<h3><i class="fa fa-angle-right"></i> Manage List</h3>
 				<div class="row">
-				
-                  
-	                  
+
+
+
                   <div class="col-md-12">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
@@ -144,7 +116,7 @@ echo "<script>alert('Data deleted');</script>";
                               </tr>
                               </thead>
                               <tbody>
-                              <?php $ret=mysqli_query($con,"select * from list");
+                              <?php $ret=mysqli_query($con,"select * from list WHERE `paid` = '1'");
 							  $cnt=1;
 							  while($row=mysqli_fetch_array($ret))
 							  {?>
@@ -154,25 +126,25 @@ echo "<script>alert('Data deleted');</script>";
                                   <td><?php echo $row['Last_name'];?></td>
                                   <td><?php echo $row['D.O.B'];?></td>
                                   <td><?php echo $row['Marital_status'];?></td>
-                                  <td><?php echo $row['Phone'];?></td> 
+                                  <td><?php echo $row['Phone'];?></td>
                                   <td><?php echo $row['Address'];?></td>
                                   <td><?php echo $row['Provider'];?></td>
                                   <td><?php echo $row['Photo'];?></td>
-                                  <td><?php echo $row['Identification'];?></td> 
+                                  <td><?php echo $row['Identification'];?></td>
                                   <td><?php echo $row['Reg. Date'];?></td>
                                   <td>
-                                     
-                                     <a href="update-profile.php?uid=<?php echo $row['id'];?>"> 
+
+                                     <a href="update-profile.php?uid=<?php echo $row['id'];?>">
                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                                     <a href="manage-users.php?id=<?php echo $row['id'];?>"> 
+                                     <a href="manage-users.php?id=<?php echo $row['id'];?>">
                                      <button class="btn btn-danger btn-xs" onClick="return confirm('Do you really want to delete');"><i class="fa fa-trash-o "></i></button></a>
                                      <a href="#">
                                      <button class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></button></a>
-                                     
+
                                   </td>
                               </tr>
                               <?php $cnt=$cnt+1; }?>
-                             
+
                               </tbody>
                           </table>
                       </div>

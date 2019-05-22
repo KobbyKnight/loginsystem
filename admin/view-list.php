@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <?php
 	require_once 'checklogin.php';
-    $conn = new mysqli("localhost", "root", "snithy123", "loginsystem") or die(mysqli_error());
-    
+    $conn = new mysqli("localhost", "root", "", "loginsystem") or die(mysqli_error());
+
     $grabid = $_GET['uid'];
-
-    echo $grabid;
-
 	//$query = $conn->query("SELECT * FROM `list` WHERE `id` = '$grabid'") or die(mysqli_error());
 	//$fetch = $query->fetch_array();
 ?>
@@ -33,12 +30,12 @@
               <div class="sidebar-toggle-box">
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
-            
+
             <a href="#" class="logo"><b>Admin Dashboard</b></a>
             <div class="nav notify-row" id="top_menu">
-               
-                         
-                   
+
+
+
                 </ul>
             </div>
             <div class="top-menu">
@@ -50,10 +47,10 @@
       <aside>
           <div id="sidebar"  class="nav-collapse ">
               <ul class="sidebar-menu" id="nav-accordion">
-              
+
               	  <p class="centered"><a href="#"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
               	  <h5 class="centered"></h5>
-              	  	
+
                   <li class="mt">
                       <a href="change-password.php">
                           <i class="fa fa-file"></i>
@@ -66,7 +63,7 @@
                           <i class="fa fa-users"></i>
                           <span>Manage Users</span>
                       </a>
-                   
+
                   </li>
 
                   <li class="sub-menu">
@@ -75,47 +72,36 @@
                           <span>Manage Group List</span>
                       </a>
                   </li>
-                  
+
                   <li class="sub-menu">
                       <a href="manage-list.php">
                           <i class="fa fa-users"></i>
                           <span>Manage List</span>
                       </a>
                   </li>
-                  
+
                   <li class="sub-menu">
                       <a href="paid-list.php">
                           <i class="fa fa-users"></i>
                           <span>Paid Personal</span>
                       </a>
                   </li>
-              
-                 
+
+
               </ul>
           </div>
       </aside>
-      
-
-      <?php 
-      
-      
-      $ret=mysqli_query($conn,"select * from list where id= 1");
-
-      
+      <?php
+      $ret=mysqli_query($conn,"select * from list where id= '$grabid'");
 	  while($row=mysqli_fetch_array($ret)){
-	  
-	  
-          
-          
-        echo $row['First_name'];
           ?>
       <section id="main-content">
           <section class="wrapper">
           	<h3><i class="fa fa-angle-right"></i> <?php echo $row['First_name'];?>'s Information</h3>
-             	
+
               <div class = "panel-body" id="div-id-name">
 					<table id="table" class="display" style="border:none">
-						
+
 						<tr>
 							<th> Name: </th>
 							<td><?php echo $row['First_name'].' '.$row['Last_name'] ?></td>
@@ -156,16 +142,16 @@
 							<td><?php echo $row['Identification'].' '?></td>
 						</tr>
 					</table>
-			</div>	
+			</div>
 		</div>
 
       <?php } ?>
-        
+
       </section></section>      <h3>
 	  <a href="#" id="print" class="btn btn-info" onclick="javascript:printlayer('div-id-name')">Print</a>
 	</h3>
 	</div>
-      
+
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
@@ -183,5 +169,5 @@
 </html>
 
 <?php
-	
+
 ?>

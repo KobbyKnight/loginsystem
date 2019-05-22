@@ -3,15 +3,6 @@ session_start();
 include'dbconnection.php';
 include("checklogin.php");
 check_login();
-if(isset($_GET['id']))
-{
-$adminid=$_GET['id'];
-$msg=mysqli_query($con,"delete from list where id='$adminid'");
-if($msg)
-{
-echo "<script>alert('Data deleted');</script>";
-}
-}
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,9 +25,9 @@ echo "<script>alert('Data deleted');</script>";
               </div>
             <a href="#" class="logo"><b>Admin Dashboard</b></a>
             <div class="nav notify-row" id="top_menu">
-               
-                         
-                   
+
+
+
                 </ul>
             </div>
             <div class="top-menu">
@@ -48,10 +39,10 @@ echo "<script>alert('Data deleted');</script>";
       <aside>
           <div id="sidebar"  class="nav-collapse ">
               <ul class="sidebar-menu" id="nav-accordion">
-              
+
               	  <p class="centered"><a href="#"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
               	  <h5 class="centered"><?php echo $_SESSION['login'];?></h5>
-              	  	
+
                   <li class="mt">
                       <a href="change-password.php">
                           <i class="fa fa-file"></i>
@@ -64,7 +55,7 @@ echo "<script>alert('Data deleted');</script>";
                           <i class="fa fa-users"></i>
                           <span>Manage Users</span>
                       </a>
-                   
+
                   </li>
 
                   <li class="sub-menu">
@@ -73,22 +64,22 @@ echo "<script>alert('Data deleted');</script>";
                           <span>Manage Group List</span>
                       </a>
                   </li>
-                  
+
                   <li class="sub-menu">
                       <a href="manage-list.php">
                           <i class="fa fa-users"></i>
                           <span>Manage List</span>
                       </a>
                   </li>
-                  
+
                   <li class="sub-menu">
                       <a href="paid-list.php">
                           <i class="fa fa-users"></i>
                           <span>Paid Personal</span>
                       </a>
                   </li>
-              
-                 
+
+
               </ul>
           </div>
       </aside>
@@ -96,9 +87,9 @@ echo "<script>alert('Data deleted');</script>";
           <section class="wrapper">
           	<h3><i class="fa fa-angle-right"></i> Manage List</h3>
 				<div class="row">
-				
-                  
-	                  
+
+
+
                   <div class="col-md-12">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
@@ -120,7 +111,7 @@ echo "<script>alert('Data deleted');</script>";
                               </tr>
                               </thead>
                               <tbody>
-                              <?php $ret=mysqli_query($con,"select * from list");
+                              <?php $ret=mysqli_query($con,"select * from list WHERE `paid` ='0'");
 							  $cnt=1;
 							  while($row=mysqli_fetch_array($ret))
 							  {?>
@@ -130,17 +121,17 @@ echo "<script>alert('Data deleted');</script>";
                                   <td><?php echo $row['Last_name'];?></td>
                                   <td><?php echo $row['D.O.B'];?></td>
                                   <td><?php echo $row['Marital_status'];?></td>
-                                  <td><?php echo $row['Phone'];?></td> 
+                                  <td><?php echo $row['Phone'];?></td>
                                   <td><?php echo $row['Address'];?></td>
                                   <td><?php echo $row['Provider'];?></td>
                                   <td><?php echo $row['Photo'];?></td>
-                                  <td><?php echo $row['Identification'];?></td> 
+                                  <td><?php echo $row['Identification'];?></td>
                                   <td><?php echo $row['Reg. Date'];?></td>
                                   <td>
-                                     
-                                     <a href="update-list.php?uid=<?php echo $row['id'];?>"> 
+
+                                     <a href="update-list.php?uid=<?php echo $row['id'];?>">
                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                                     <a href="manage-users.php?id=<?php echo $row['id'];?>"> 
+                                     <a href="manage-users.php?id=<?php echo $row['id'];?>">
                                      <button class="btn btn-danger btn-xs" onClick="return confirm('Do you really want to delete');"><i class="fa fa-trash-o "></i></button></a>
                                      <a href="view-list.php?uid=<?php echo $row['id'];?>">
                                      <button class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></button></a>
@@ -149,7 +140,7 @@ echo "<script>alert('Data deleted');</script>";
                                   </td>
                               </tr>
                               <?php $cnt=$cnt+1; }?>
-                             
+
                               </tbody>
                           </table>
                       </div>
