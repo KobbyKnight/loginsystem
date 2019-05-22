@@ -1,7 +1,7 @@
 <?php session_start();
 require_once('dbconnection.php');
 
-//Code for Registration 
+//Code for Registration
 if(isset($_POST['Signup']))
 {
 	$fname=$_POST['fname'];
@@ -35,9 +35,9 @@ if($msg)
 				<script type="text/javascript">
 					$(document).ready(function () {
 						$('#horizontalTab').easyResponsiveTabs({
-							type: 'default',       
-							width: 'auto', 
-							fit: true 
+							type: 'default',
+							width: 'auto',
+							fit: true
 						});
 					});
 				   </script>
@@ -46,20 +46,20 @@ if($msg)
 <body>
 <div class="main">
 		<h1>NHIS Registration and Login</h1>
-	 <div class="sap_tabs">	
+	 <div class="sap_tabs">
 			<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
 			  <ul class="resp-tabs-list">
 			  	  <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><div class="top-img"><img src="images/top-note.png" alt=""/></div><span>Register</span>
-			  	  	
+
 				</li>
-				  
+
 				  <div class="clear"></div>
-			  </ul>		
-			  	 
+			  </ul>
+
 			<div class="resp-tabs-container">
 					<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 					<div class="facts">
-					
+
 						<div class="register">
 							<form name="nhisregistration" method="post" action="upload.php" enctype="multipart/form-data">
 								<p>First Name </p>
@@ -82,7 +82,7 @@ if($msg)
 								<p>Prefered Primary Provider </p>
 								<input type="text" class="text" value="" name="provider"  >
 								<p>Applicant Current Photo </p>
-								
+
 								<input type="file" accept="image/*" class="text"  name="photo" id="photo" >
 								<p>National Id </p>
 								<input type="file" accept="image/*" class="text"  name="id" id="id" >
@@ -99,4 +99,4 @@ if($msg)
                  	     </div>
 
 </body>
-</html>		
+</html>

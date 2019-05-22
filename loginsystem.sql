@@ -21,7 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `loginsystem`
 --
-
+CREATE DATABASE IF NOT EXISTS `loginsystem`;
+USE `loginsystem`;
 -- --------------------------------------------------------
 
 --
