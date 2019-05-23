@@ -12,16 +12,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
     <!-- jQuery library -->
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
-    <script src="js/caroufredsel.js"></script> 
+    <script src="js/caroufredsel.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    
+
 </head>
 <body>
     <header>
@@ -29,7 +29,7 @@
             <div class="row">
             <a href="" class="logo"><img src="images/mail.png"></a>
 
-              <nav class="listt" style="float:right;"> 
+              <nav class="list ml-auto pull-right" > 
                   <ul class="list">
                       <li><a href="">HOME</a></li>
                       <li><a href="">SERVICES</a></li>
@@ -50,9 +50,9 @@
                 <i class="fab fa-twitter"></i>
                 <p><br>
                     Renew your Membership Annually to enjoy <br>
-                    uninterrupted access to healthcare 
+                    uninterrupted access to healthcare
                 </p><br>
-                
+
 <div class="btn-group">
   <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Sign Up
@@ -72,9 +72,9 @@
                 <i class="fab fa-twitter"></i>
                 <p><br>
                     Renew your Membership Annually to enjoy <br>
-                    uninterrupted access to healthcare 
+                    uninterrupted access to healthcare
                 </p><br>
-                
+
 <div class="btn-group">
   <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Sign Up
@@ -94,9 +94,9 @@
                 <i class="fab fa-twitter"></i>
                 <p><br>
                     Renew your Membership Annually to enjoy <br>
-                    uninterrupted access to healthcare 
+                    uninterrupted access to healthcare
                 </p><br>
-                
+
 <div class="btn-group">
   <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Sign Up
@@ -110,7 +110,7 @@
             </li>
             </ul>
         </section>
-        
+
 
         <section class="intro-area white" id="intro">
             <div class="container">
@@ -135,7 +135,7 @@
                             </p>
                         </div>
                     </div>
-                
+
 
                 <div class="col-sm-4">
                         <div class="intro-block">
@@ -148,7 +148,7 @@
                             </p>
                         </div>
                     </div>
-                
+
 
                 <div class="col-sm-4">
                         <div class="intro-block">
@@ -161,12 +161,12 @@
                             </p>
                         </div>
                     </div>
-                
+
             </div>
         </section>
     </div>
 
 
-<script src="js/main.js"></script>            
+<script src="js/main.js"></script>
 </body>
 </html>
