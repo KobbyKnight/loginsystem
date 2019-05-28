@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include('dbconnection.php');
 if(isset($_POST['login']))
@@ -9,7 +9,7 @@ $ret= mysql_query("SELECT * FROM users WHERE email='".$_POST['uemail']."' and pa
 $num=mysql_fetch_array($ret);
 if($num>0)
 {
-	
+
 	$extra="welcome.php";
 $_SESSION['login']=$_POST['uemail'];
 $_SESSION['id']=$num['id'];
